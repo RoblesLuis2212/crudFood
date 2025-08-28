@@ -4,6 +4,7 @@ import Inicio from "./components/pages/Inicio";
 import Login from "./components/pages/Login";
 import DetalleProducto from "./components/pages/DetalleProducto";
 import Administrador from "./components/pages/Administrador";
+import FormularioProducto from "./components/pages/products/FormularioProducto";
 import Error404 from "./components/pages/Error404";
 import { BrowserRouter, Routes, Route } from "react-router";
 BrowserRouter;
@@ -23,6 +24,14 @@ function App() {
           <Route
             path="/administrador"
             element={<Administrador></Administrador>}
+          ></Route>
+          <Route
+            path="/administrador/crear"
+            element={<FormularioProducto></FormularioProducto>}
+          ></Route>
+          <Route
+            path="/administrador/editar"
+            element={<FormularioProducto></FormularioProducto>}
           ></Route>
           <Route path="*" element={<Error404></Error404>}></Route>
         </Routes>
