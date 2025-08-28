@@ -4,7 +4,10 @@ const Menu = () => {
     <div>
       <Navbar expand="lg" className="bg-body-tertiary">
         <Container>
-          <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+          <Navbar.Brand href="#home" className="titulo">
+            <i className="bi bi-egg-fried me-2"></i>
+            Crud Food
+          </Navbar.Brand>
 
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
