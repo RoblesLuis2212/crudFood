@@ -14,7 +14,7 @@ function App() {
     <>
       <BrowserRouter>
         <Menu></Menu>
-        <main>
+        <main className="container">
           <Routes>
             <Route path="/" element={<Inicio></Inicio>}></Route>
             <Route
