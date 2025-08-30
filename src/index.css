@@ -32,7 +32,7 @@ main{
   border-radius: 10px;
 }
 .fontTiza {
-  font-family: "Cabin Sketch", cursive;
+  font-family: "Cabin Sketch", cursive !important;
   font-weight: 400;
   font-style: normal;
 }
