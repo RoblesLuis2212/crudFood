@@ -21,8 +21,20 @@ const Login = () => {
             <Form onSubmit={handleSubmit(onSubmit)}>
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email</Form.Label>
-                <Form.Control type="email" placeholder="juanperez@gmail.com" />
-                <Form.Text className="text-danger">mensaje de error</Form.Text>
+                <Form.Control
+                  type="email"
+                  placeholder="juanperez@gmail.com"
+                  {...register("email", {
+                    required: "el email es obligatorio",
+                    pattern: {
+                      value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                      message: "el email ingresado no es valido",
+                    },
+                  })}
+                />
+                <Form.Text className="text-danger">
+                  {errors.email?.message}
+                </Form.Text>
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -30,8 +42,22 @@ const Login = () => {
                 <Form.Control
                   type="password"
                   placeholder="ingresa tu contraseña"
+                  {...register("contrasena", {
+                    required: "la contraseña es obligatoria",
+                    minLength: {
+                      value: 8,
+                      message:
+                        "la contraseña debe contener minimo 8 caracteres",
+                    },
+                    maxLength: {
+                      value: 30,
+                      message: "la contraseña debe contener maximo 30 carteres",
+                    },
+                  })}
                 />
-                <Form.Text className="text-danger">mensaje de error</Form.Text>
+                <Form.Text className="text-danger">
+                  {errors.contrasena?.message}
+                </Form.Text>
               </Form.Group>
               <Button variant="warning" type="submit">
                 Iniciar Sesión
