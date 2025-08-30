@@ -2,9 +2,9 @@ import React from "react";
 
 const Administrador = () => {
   return (
-    <div>
-      <h1>Pagina del administrador</h1>
-    </div>
+    <section>
+      <h2>Crear Producto</h2>
+    </section>
   );
 };
 
