@@ -1,9 +1,11 @@
-import React from "react";
+import FormularioProducto from "./products/FormularioProducto";
 
 const Administrador = () => {
   return (
-    <section>
-      <h2>Crear Producto</h2>
+    <section className="container mt-4">
+      <h2 className="display-5">Crear Producto</h2>
+      <hr />
+      <FormularioProducto></FormularioProducto>
     </section>
   );
 };
