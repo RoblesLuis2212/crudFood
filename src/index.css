@@ -40,6 +40,10 @@ main{
   resize: none !important;
   height: 100px;
 }
+.imgTableProducto{
+  width: 250px;
+
+}
 /*media query para dispositivos mobile*/
 @media (max-width: 576px){
   .container-banner{
