@@ -14,8 +14,8 @@ const ProductosDisponibles = () => {
             <i className="bi bi-database-fill-add"></i>
           </Button>
         </div>
-        <hr />
       </div>
+      <hr />
       <TablaProductos></TablaProductos>
     </section>
   );
