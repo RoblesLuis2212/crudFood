@@ -1,16 +1,38 @@
 import { Button, Row, Col, Form } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router";
+import Swal from "sweetalert2";
 
-const Login = () => {
+const Login = ({ setUsuarioLogueado }) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
+  const navegacion = useNavigate();
+
   const onSubmit = (data) => {
     console.log(data);
+    //Agregar logica del login
+    if (
+      data.email === import.meta.env.VITE_API_EMAIL &&
+      data.contrasena === import.meta.env.VITE_API_PASSWORD
+    ) {
+      //aqui logueo al usuario
+      //actualizar el estado
+      setUsuarioLogueado(true);
+      console.log("inicio de sesion exitoso");
+      //redireccionar a la pagina del administrador
+      navegacion("/administrador");
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Error en el inicio de sesion",
+        text: "los datos ingresados son incorrectos!",
+      });
+    }
   };
 
   return (

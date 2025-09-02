@@ -7,9 +7,17 @@ import Administrador from "./components/pages/Administrador";
 import FormularioProducto from "./components/pages/products/FormularioProducto";
 import Error404 from "./components/pages/Error404";
 import { BrowserRouter, Routes, Route } from "react-router";
+import { useEffect, useState } from "react";
 BrowserRouter;
 
 function App() {
+  const sesionUsuario =
+    JSON.parse(sessionStorage.getItem("usuarioKey")) || false;
+  const [usuarioLogeado, setUsuarioLogueado] = useState(false);
+
+  useEffect(() => {
+    sessionStorage.setItem("usuarioKey", JSON.stringify(usuarioLogeado));
+  }, [usuarioLogeado]);
   return (
     <>
       <BrowserRouter>
@@ -21,7 +29,10 @@ function App() {
               path="/detalle"
               element={<DetalleProducto></DetalleProducto>}
             ></Route>
-            <Route path="/login" element={<Login></Login>}></Route>
+            <Route
+              path="/login"
+              element={<Login setUsuarioLogueado={setUsuarioLogueado}></Login>}
+            ></Route>
             <Route
               path="/administrador"
               element={<Administrador></Administrador>}
