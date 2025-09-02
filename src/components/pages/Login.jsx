@@ -23,8 +23,11 @@ const Login = ({ setUsuarioLogueado }) => {
       //aqui logueo al usuario
       //actualizar el estado
       setUsuarioLogueado(true);
-      console.log("inicio de sesion exitoso");
-      //redireccionar a la pagina del administrador
+      Swal.fire({
+        icon: "success",
+        title: "Bienvenido!",
+        text: "inicio de sesion exitoso",
+      }); //redireccionar a la pagina del administrador
       navegacion("/administrador");
     } else {
       Swal.fire({

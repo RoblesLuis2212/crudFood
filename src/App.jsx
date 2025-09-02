@@ -21,7 +21,10 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Menu></Menu>
+        <Menu
+          usuarioLogeado={usuarioLogeado}
+          setUsuarioLogueado={setUsuarioLogueado}
+        ></Menu>
         <main className="container">
           <Routes>
             <Route path="/" element={<Inicio></Inicio>}></Route>
