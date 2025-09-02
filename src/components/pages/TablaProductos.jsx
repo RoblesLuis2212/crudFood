@@ -27,7 +27,7 @@ const TablaProductos = () => {
             />
           </td>
           <td>Comida</td>
-          <td className="text-center">
+          <td className="d-flex gap-1">
             <Button variant="warning" className="me-2">
               <i className="bi bi-pencil-square"></i>
             </Button>
