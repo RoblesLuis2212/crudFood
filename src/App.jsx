@@ -8,6 +8,7 @@ import FormularioProducto from "./components/pages/products/FormularioProducto";
 import Error404 from "./components/pages/Error404";
 import { BrowserRouter, Routes, Route } from "react-router";
 import { useEffect, useState } from "react";
+import ProtectorAdmin from "./components/routes/ProtectorAdmin";
 BrowserRouter;
 
 function App() {
@@ -36,6 +37,25 @@ function App() {
               path="/login"
               element={<Login setUsuarioLogueado={setUsuarioLogueado}></Login>}
             ></Route>
+            <Route
+              path="/administrador"
+              element={
+                <ProtectorAdmin
+                  usuarioLogeado={usuarioLogeado}
+                ></ProtectorAdmin>
+              }
+            >
+              <Route index element={<Administrador></Administrador>}></Route>
+              <Route
+                path="crear"
+                element={<FormularioProducto></FormularioProducto>}
+              ></Route>
+              <Route
+                path="editar"
+                element={<FormularioProducto></FormularioProducto>}
+              ></Route>
+            </Route>
+
             <Route
               path="/administrador"
               element={<Administrador></Administrador>}
