@@ -16,11 +16,19 @@ function App() {
     JSON.parse(sessionStorage.getItem("usuarioKey")) || false;
   const [usuarioLogeado, setUsuarioLogueado] = useState(sesionUsuario);
 
-  const [productos, SetProductos] = useState([]);
+  //Almacenar los productos en el local storage
+  const productosLS = JSON.parse(localStorage.getItem("productosKey")) || [];
+
+  const [productos, SetProductos] = useState(productosLS);
 
   useEffect(() => {
     sessionStorage.setItem("usuarioKey", JSON.stringify(usuarioLogeado));
   }, [usuarioLogeado]);
+
+  useEffect(() => {
+    localStorage.setItem("productosKey", JSON.stringify(productos));
+  }, [productos]);
+
   return (
     <>
       <BrowserRouter>
