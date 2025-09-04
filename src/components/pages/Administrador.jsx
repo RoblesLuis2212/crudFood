@@ -1,7 +1,7 @@
 import FormularioProducto from "./products/FormularioProducto";
 import ProductosDisponibles from "./ProductosDisponibles";
 
-const Administrador = ({ setProductos, productos }) => {
+const Administrador = ({ setProductos, productos, borrarProducto }) => {
   return (
     <>
       <section className="container mt-4">
@@ -9,6 +9,7 @@ const Administrador = ({ setProductos, productos }) => {
         <ProductosDisponibles
           setProducto={setProductos}
           productos={productos}
+          borrarProducto={borrarProducto}
         ></ProductosDisponibles>
       </section>
     </>

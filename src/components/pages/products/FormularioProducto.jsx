@@ -1,8 +1,10 @@
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
+import { v4 as uuidv4 } from "uuid";
 
-const FormularioProducto = () => {
+const FormularioProducto = ({ titulo, crearProducto }) => {
   const {
     register,
     handleSubmit,
@@ -11,12 +13,26 @@ const FormularioProducto = () => {
   } = useForm();
 
   const postValidacion = (data) => {
-    console.log(data);
+    if (titulo === "Crear producto") {
+      //Agregar id
+      data.id = uuidv4();
+      console.log(data);
+
+      if (crearProducto(data)) {
+        Swal.fire({
+          title: "Producto creado",
+          text: `Producto ${data.nombreProducto} se creo correctamente`,
+          icon: "success",
+        });
+        reset();
+      }
+    } else {
+    }
   };
 
   return (
     <>
-      <h2 className="display-5 mt-3">Crear producto</h2>
+      <h2 className="display-5 mt-3">{titulo}</h2>
       <hr />
       <Form onSubmit={handleSubmit(postValidacion)}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -73,8 +89,8 @@ const FormularioProducto = () => {
               required: "la URL de la imagen es un dato obligatorio",
               validate: {
                 validUrl: (value) =>
-                  /^https?:\/\/.+\.(jpg|jpeg|png|gif|webp|svg)$/i.test(value),
-                message: "la URL ingresada no es valida",
+                  /^https?:\/\/.+\.(jpg|jpeg|png|gif|webp|svg)$/i.test(value) ||
+                  "la URL ingresada no es valida",
               },
             })}
           />
@@ -90,6 +106,7 @@ const FormularioProducto = () => {
             })}
           >
             <option value="">Seleccione una categoria</option>
+            <option value="sandwich">Sandwiches</option>
           </Form.Select>
           <Form.Text className="text-danger">
             {errors.categoria?.message}

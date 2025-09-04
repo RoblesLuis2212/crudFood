@@ -2,7 +2,7 @@ import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import ItemProducto from "./ItemProducto";
 
-const TablaProductos = ({ setProductos, productos }) => {
+const TablaProductos = ({ setProductos, productos, borrarProducto }) => {
   return (
     <Table striped bordered hover size="sm" responsive>
       <thead>
@@ -19,7 +19,8 @@ const TablaProductos = ({ setProductos, productos }) => {
         {productos.map((itemProducto) => (
           <ItemProducto
             itemProducto={itemProducto}
-            key={productos.id}
+            key={itemProducto.id}
+            borrarProducto={borrarProducto}
           ></ItemProducto>
         ))}
       </tbody>

@@ -1,6 +1,6 @@
 import Button from "react-bootstrap/Button";
 
-const ItemProducto = ({ itemProducto }) => {
+const ItemProducto = ({ itemProducto, borrarProducto }) => {
   return (
     <tr>
       <td>{itemProducto.id}</td>
@@ -18,7 +18,10 @@ const ItemProducto = ({ itemProducto }) => {
         <Button variant="warning" className="me-2">
           <i className="bi bi-pencil-square"></i>
         </Button>
-        <Button variant="danger">
+        <Button
+          variant="danger"
+          onClick={() => borrarProducto(itemProducto.id)}
+        >
           <i className="bi bi-trash-fill"></i>
         </Button>
       </td>

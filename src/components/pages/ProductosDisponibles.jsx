@@ -3,7 +3,7 @@ import TablaProductos from "./TablaProductos";
 import { Link } from "react-router";
 import ProductosPrueba from "../../data/ProductosPrueba";
 
-const ProductosDisponibles = ({ setProducto, productos }) => {
+const ProductosDisponibles = ({ setProducto, productos, borrarProducto }) => {
   const cargarProductosPrueba = () => {
     setProducto(ProductosPrueba);
     console.log("cargando productos de prueba...");
@@ -34,6 +34,7 @@ const ProductosDisponibles = ({ setProducto, productos }) => {
       <TablaProductos
         setProductos={setProducto}
         productos={productos}
+        borrarProducto={borrarProducto}
       ></TablaProductos>
     </section>
   );

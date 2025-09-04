@@ -29,6 +29,19 @@ function App() {
     localStorage.setItem("productosKey", JSON.stringify(productos));
   }, [productos]);
 
+  const crearProducto = (productoNuevo) => {
+    SetProductos([...productos, productoNuevo]);
+    return true;
+  };
+
+  const borrarProducto = (idProducto) => {
+    const productosFiltrados = productos.filter(
+      (itemProducto) => itemProducto.id !== idProducto
+    );
+    SetProductos(productosFiltrados);
+    return true;
+  };
+
   return (
     <>
       <BrowserRouter>
@@ -61,16 +74,24 @@ function App() {
                   <Administrador
                     setProductos={SetProductos}
                     productos={productos}
+                    borrarProducto={borrarProducto}
                   ></Administrador>
                 }
               ></Route>
               <Route
                 path="crear"
-                element={<FormularioProducto></FormularioProducto>}
+                element={
+                  <FormularioProducto
+                    titulo="Crear Producto"
+                    crearProducto={crearProducto}
+                  ></FormularioProducto>
+                }
               ></Route>
               <Route
                 path="editar"
-                element={<FormularioProducto></FormularioProducto>}
+                element={
+                  <FormularioProducto titulo="Editar Producto"></FormularioProducto>
+                }
               ></Route>
             </Route>
 
