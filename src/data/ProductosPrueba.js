@@ -1,4 +1,4 @@
-const productos = [
+const ProductosPrueba = [
   {
     id: 1,
     nombreProducto: "Pizza Margarita Clásica",

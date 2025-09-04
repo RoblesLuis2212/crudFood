@@ -1,7 +1,8 @@
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
+import ItemProducto from "./ItemProducto";
 
-const TablaProductos = () => {
+const TablaProductos = ({ setProductos, productos }) => {
   return (
     <Table striped bordered hover size="sm" responsive>
       <thead>
@@ -15,27 +16,12 @@ const TablaProductos = () => {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>Pizza Margarita Clásica</td>
-          <td>$4500</td>
-          <td className="text-center">
-            <img
-              src="https://images.pexels.com/photos/2619970/pexels-photo-2619970.jpeg"
-              alt="pizza margarita clasica"
-              className="imgTableProducto"
-            />
-          </td>
-          <td>Comida</td>
-          <td className="d-flex justify-content-md-center gap-1">
-            <Button variant="warning" className="me-2">
-              <i className="bi bi-pencil-square"></i>
-            </Button>
-            <Button variant="danger">
-              <i className="bi bi-trash-fill"></i>
-            </Button>
-          </td>
-        </tr>
+        {productos.map((itemProducto) => (
+          <ItemProducto
+            itemProducto={itemProducto}
+            key={productos.id}
+          ></ItemProducto>
+        ))}
       </tbody>
     </Table>
   );

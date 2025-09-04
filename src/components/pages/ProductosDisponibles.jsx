@@ -1,8 +1,14 @@
 import Button from "react-bootstrap/Button";
 import TablaProductos from "./TablaProductos";
 import { Link } from "react-router";
+import ProductosPrueba from "../../data/ProductosPrueba";
 
-const ProductosDisponibles = () => {
+const ProductosDisponibles = ({ setProducto, productos }) => {
+  const cargarProductosPrueba = () => {
+    setProducto(ProductosPrueba);
+    console.log("cargando productos de prueba...");
+  };
+
   return (
     <section className="container mt-3">
       <div className="d-flex align-items-start align-items-md-center">
@@ -14,14 +20,21 @@ const ProductosDisponibles = () => {
             </Button>
           </Link>
           <Link>
-            <Button variant="success" className="mt-4">
+            <Button
+              variant="success"
+              className="mt-4"
+              onClick={cargarProductosPrueba}
+            >
               <i className="bi bi-database-fill-add"></i>
             </Button>
           </Link>
         </div>
       </div>
       <hr />
-      <TablaProductos></TablaProductos>
+      <TablaProductos
+        setProductos={setProducto}
+        productos={productos}
+      ></TablaProductos>
     </section>
   );
 };

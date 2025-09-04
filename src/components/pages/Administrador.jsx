@@ -1,12 +1,15 @@
 import FormularioProducto from "./products/FormularioProducto";
 import ProductosDisponibles from "./ProductosDisponibles";
 
-const Administrador = () => {
+const Administrador = ({ setProductos, productos }) => {
   return (
     <>
       <section className="container mt-4">
         <hr />
-        <ProductosDisponibles></ProductosDisponibles>
+        <ProductosDisponibles
+          setProducto={setProductos}
+          productos={productos}
+        ></ProductosDisponibles>
       </section>
     </>
   );

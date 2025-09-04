@@ -47,7 +47,15 @@ function App() {
                 ></ProtectorAdmin>
               }
             >
-              <Route index element={<Administrador></Administrador>}></Route>
+              <Route
+                index
+                element={
+                  <Administrador
+                    setProductos={SetProductos}
+                    productos={productos}
+                  ></Administrador>
+                }
+              ></Route>
               <Route
                 path="crear"
                 element={<FormularioProducto></FormularioProducto>}
