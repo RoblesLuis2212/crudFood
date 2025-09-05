@@ -43,6 +43,7 @@ function App() {
   };
 
   const buscarProducto = (idProducto) => {
+    console.log(idProducto);
     const productoBuscado = productos.find(
       (itemProducto) => itemProducto.id === idProducto
     );
@@ -115,9 +116,7 @@ function App() {
               ></Route>
               <Route
                 path="editar"
-                element={
-                  <FormularioProducto titulo="Editar Producto"></FormularioProducto>
-                }
+                element={<FormularioProducto></FormularioProducto>}
               ></Route>
             </Route>
 
@@ -136,7 +135,13 @@ function App() {
             ></Route>
             <Route
               path="/administrador/editar/:id"
-              element={<FormularioProducto></FormularioProducto>}
+              element={
+                <FormularioProducto
+                  titulo="Editar Producto"
+                  buscarProducto={buscarProducto}
+                  modificarProducto={modificarProducto}
+                ></FormularioProducto>
+              }
             ></Route>
             <Route path="*" element={<Error404></Error404>}></Route>
           </Routes>

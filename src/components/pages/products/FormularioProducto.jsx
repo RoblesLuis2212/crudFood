@@ -1,16 +1,38 @@
+import { useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useForm } from "react-hook-form";
+import { useParams } from "react-router";
 import Swal from "sweetalert2";
 import { v4 as uuidv4 } from "uuid";
 
-const FormularioProducto = ({ titulo, crearProducto }) => {
+const FormularioProducto = ({
+  titulo,
+  crearProducto,
+  buscarProducto,
+  modificarProducto,
+}) => {
   const {
     register,
     handleSubmit,
     reset,
+    setValue,
     formState: { errors },
   } = useForm();
+
+  const { id } = useParams();
+
+  useEffect(() => {
+    if (titulo === "Editar Producto") {
+      const productoBuscado = buscarProducto(id);
+      setValue("nombreProducto", productoBuscado.nombreProducto);
+      setValue("precio", productoBuscado.precio);
+      setValue("imagen", productoBuscado.imagen);
+      setValue("categoria", productoBuscado.categoria);
+      setValue("descripcion_breve", productoBuscado.descripcion_breve);
+      setValue("descripcion_amplia", productoBuscado.descripcion_amplia);
+    }
+  });
 
   const postValidacion = (data) => {
     if (titulo === "Crear Producto") {
@@ -106,7 +128,12 @@ const FormularioProducto = ({ titulo, crearProducto }) => {
             })}
           >
             <option value="">Seleccione una categoria</option>
-            <option value="sandwich">Sandwiches</option>
+            <option value="sandwiches_y_wraps">Sandwiches</option>
+            <option value="pizzas">Pizzas</option>
+            <option value="ensaladas">Ensaladas</option>
+            <option value="acompanamientos">Acompañamientos</option>
+            <option value="postres">Postres</option>
+            <option value="bebidas">Bebidas</option>x
           </Form.Select>
           <Form.Text className="text-danger">
             {errors.categoria?.message}

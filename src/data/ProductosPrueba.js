@@ -1,6 +1,6 @@
 const ProductosPrueba = [
   {
-    id: 1,
+    id: "1",
     nombreProducto: "Pizza Margarita Clásica",
     precio: 4500,
     descripcion_breve:
@@ -12,7 +12,7 @@ const ProductosPrueba = [
       "https://images.pexels.com/photos/16890470/pexels-photo-16890470.jpeg",
   },
   {
-    id: 2,
+    id: "2",
     nombreProducto: "Hamburguesa BBQ Deluxe",
     precio: 3800,
     descripcion_breve: "Hamburguesa con carne angus, bacon y salsa barbacoa",
@@ -23,7 +23,7 @@ const ProductosPrueba = [
       "https://images.pexels.com/photos/1639557/pexels-photo-1639557.jpeg",
   },
   {
-    id: 3,
+    id: "3",
     nombreProducto: "Cerveza Artesanal IPA",
     precio: 1800,
     descripcion_breve: "Cerveza artesanal India Pale Ale con lúpulo aromático",
@@ -34,7 +34,7 @@ const ProductosPrueba = [
       "https://images.pexels.com/photos/52994/beer-ale-bitter-fermented-52994.jpeg",
   },
   {
-    id: 4,
+    id: "4",
     nombreProducto: "Brownie con Helado",
     precio: 2200,
     descripcion_breve:
@@ -46,7 +46,7 @@ const ProductosPrueba = [
       "https://images.pexels.com/photos/27359377/pexels-photo-27359377.jpeg",
   },
   {
-    id: 5,
+    id: "5",
     nombreProducto: "Limonada Fresca",
     precio: 1200,
     descripcion_breve: "Limonada natural con hierbabuena y jengibre",
@@ -57,7 +57,7 @@ const ProductosPrueba = [
       "https://images.pexels.com/photos/18223320/pexels-photo-18223320.jpeg",
   },
   {
-    id: 6,
+    id: "6",
     nombreProducto: "Pizza Veggie",
     precio: 4200,
     descripcion_breve: "Pizza vegetariana con pimientos, cebolla y aceitunas",
@@ -68,7 +68,7 @@ const ProductosPrueba = [
       "https://images.pexels.com/photos/33706262/pexels-photo-33706262.jpeg",
   },
   {
-    id: 7,
+    id: "7",
     nombreProducto: "Ensalada César con Pollo",
     precio: 3500,
     descripcion_breve:
@@ -80,7 +80,7 @@ const ProductosPrueba = [
       "https://images.pexels.com/photos/33674357/pexels-photo-33674357.jpeg",
   },
   {
-    id: 8,
+    id: "8",
     nombreProducto: "Sándwich de Bondiola Desmechada",
     precio: 4000,
     descripcion_breve:
@@ -92,7 +92,7 @@ const ProductosPrueba = [
       "https://images.pexels.com/photos/33706251/pexels-photo-33706251.jpeg",
   },
   {
-    id: 9,
+    id: "9",
     nombreProducto: "Papas Fritas con Cheddar y Bacon",
     precio: 2500,
     descripcion_breve:
