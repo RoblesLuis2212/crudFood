@@ -60,6 +60,9 @@ function App() {
       }
       return itemProducto;
     });
+    //actualizar el state
+    SetProductos(productoActualizado);
+    return true;
   };
 
   return (

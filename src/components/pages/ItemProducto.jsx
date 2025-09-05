@@ -1,4 +1,5 @@
 import Button from "react-bootstrap/Button";
+import { Link } from "react-router";
 
 const ItemProducto = ({ itemProducto, borrarProducto }) => {
   return (
@@ -15,9 +16,12 @@ const ItemProducto = ({ itemProducto, borrarProducto }) => {
       </td>
       <td>{itemProducto.categoria}</td>
       <td className="d-flex justify-content-md-center gap-1">
-        <Button variant="warning" className="me-2">
+        <Link
+          className="me-2 btn btn-warning"
+          to={`/administrador/editar/${itemProducto.id}`}
+        >
           <i className="bi bi-pencil-square"></i>
-        </Button>
+        </Link>
         <Button
           variant="danger"
           onClick={() => borrarProducto(itemProducto.id)}
