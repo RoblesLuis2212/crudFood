@@ -42,6 +42,26 @@ function App() {
     return true;
   };
 
+  const buscarProducto = (idProducto) => {
+    const productoBuscado = productos.find(
+      (itemProducto) => itemProducto.id === idProducto
+    );
+    return productoBuscado;
+  };
+
+  const modificarProducto = (idProducto, datosProductos) => {
+    const productoActualizado = productos.map((itemProducto) => {
+      if (itemProducto.id === idProducto) {
+        //Actulizar producto
+        return {
+          ...itemProducto,
+          ...datosProductos,
+        };
+      }
+      return itemProducto;
+    });
+  };
+
   return (
     <>
       <BrowserRouter>
@@ -109,7 +129,7 @@ function App() {
               element={<FormularioProducto></FormularioProducto>}
             ></Route>
             <Route
-              path="/administrador/editar"
+              path="/administrador/editar/:id"
               element={<FormularioProducto></FormularioProducto>}
             ></Route>
             <Route path="*" element={<Error404></Error404>}></Route>

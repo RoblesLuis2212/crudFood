@@ -13,7 +13,7 @@ const FormularioProducto = ({ titulo, crearProducto }) => {
   } = useForm();
 
   const postValidacion = (data) => {
-    if (titulo === "Crear producto") {
+    if (titulo === "Crear Producto") {
       //Agregar id
       data.id = uuidv4();
       console.log(data);
@@ -21,7 +21,7 @@ const FormularioProducto = ({ titulo, crearProducto }) => {
       if (crearProducto(data)) {
         Swal.fire({
           title: "Producto creado",
-          text: `Producto ${data.nombreProducto} se creo correctamente`,
+          text: `Producto ${data.producto} se creo correctamente`,
           icon: "success",
         });
         reset();
@@ -40,7 +40,7 @@ const FormularioProducto = ({ titulo, crearProducto }) => {
           <Form.Control
             type="text"
             placeholder="Ej: Pizza"
-            {...register("producto", {
+            {...register("nombreProducto", {
               required: "el nombre del producto es obligatorio",
               minLength: {
                 value: 3,
@@ -85,7 +85,7 @@ const FormularioProducto = ({ titulo, crearProducto }) => {
           <Form.Control
             type="text"
             placeholder="Ej: https://www.pexels.com/es-es/pizza"
-            {...register("urlimagen", {
+            {...register("imagen", {
               required: "la URL de la imagen es un dato obligatorio",
               validate: {
                 validUrl: (value) =>
@@ -117,7 +117,7 @@ const FormularioProducto = ({ titulo, crearProducto }) => {
           <Form.Control
             type="text"
             placeholder="Ej: Pizza tradicional con salsa de tomate, mozarella y albahaca"
-            {...register("descripcionbreve", {
+            {...register("descripcion_breve", {
               required: "la descripcion es una dato obligatorio",
               minLength: {
                 value: 10,
@@ -142,7 +142,7 @@ const FormularioProducto = ({ titulo, crearProducto }) => {
             as={"textarea"}
             placeholder="Ej: Nuestra pizza margarita hecha con casa madre, salsa de tomate casera, queso mozzarella de búfala premium y hojas frescas de albahaca. Horneada en horno de piedra para obtener ese crujiente perfecto."
             className="text-tarea"
-            {...register("descripcionamplia", {
+            {...register("descripcion_amplia", {
               required: "la descripcion amplia es un dato obligatorio",
               minLength: {
                 value: 20,
