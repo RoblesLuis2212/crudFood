@@ -2,14 +2,18 @@ import React from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
-const CardProducto = ({ nombre, descripcion, precio }) => {
+const CardProducto = ({ itemproducto }) => {
   return (
-    <Card>
-      <Card.Img src="https://images.pexels.com/photos/2619970/pexels-photo-2619970.jpeg" />
+    <Card className="h-100">
+      <Card.Img src={itemproducto.imagen} className="imgCardProducto" />
       <Card.Body>
-        <Card.Title className="fontTiza">{nombre}</Card.Title>
-        <Card.Text className="fontTiza">{descripcion}</Card.Text>
-        <p className="fontTiza">Precio: ${precio}</p>
+        <Card.Title className="fontTiza">
+          {itemproducto.nombreProducto}
+        </Card.Title>
+        <Card.Text className="fontTiza">
+          {itemproducto.descripcion_breve}
+        </Card.Text>
+        <p className="fontTiza">Precio: ${itemproducto.precio}</p>
       </Card.Body>
       <Card.Footer>
         <Button variant="success" className="float-end fontTiza">

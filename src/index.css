@@ -44,6 +44,10 @@ main{
   width: 250px;
 
 }
+.imgCardProducto{
+  width: 100px;
+  height: 350px;
+}
 /*media query para dispositivos mobile*/
 @media (max-width: 576px){
   .container-banner{

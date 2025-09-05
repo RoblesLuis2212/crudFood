@@ -1,7 +1,7 @@
 import { Form } from "react-bootstrap";
 import ListaProductos from "./ListaProductos";
 
-const Productos = () => {
+const Productos = ({ productos }) => {
   return (
     <>
       <section className="container mt-4">
@@ -17,7 +17,7 @@ const Productos = () => {
           </Form.Group>
         </Form>
       </section>
-      <ListaProductos></ListaProductos>
+      <ListaProductos productos={productos}></ListaProductos>
     </>
   );
 };

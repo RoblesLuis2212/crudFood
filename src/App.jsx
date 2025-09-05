@@ -71,7 +71,10 @@ function App() {
         ></Menu>
         <main className="container">
           <Routes>
-            <Route path="/" element={<Inicio></Inicio>}></Route>
+            <Route
+              path="/"
+              element={<Inicio productos={productos}></Inicio>}
+            ></Route>
             <Route
               path="/detalle"
               element={<DetalleProducto></DetalleProducto>}

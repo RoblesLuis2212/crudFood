@@ -1,11 +1,11 @@
 import Banner from "./Banner";
 import Productos from "./Productos";
 
-const Inicio = () => {
+const Inicio = ({ productos }) => {
   return (
     <div>
       <Banner></Banner>
-      <Productos></Productos>
+      <Productos productos={productos}></Productos>
     </div>
   );
 };

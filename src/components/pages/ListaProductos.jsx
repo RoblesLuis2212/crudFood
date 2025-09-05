@@ -1,17 +1,16 @@
 import { Button, Row, Col, Form, Card } from "react-bootstrap";
 import CardProducto from "./CardProducto";
+import ItemProducto from "./ItemProducto";
 
-const ListaProductos = () => {
+const ListaProductos = ({ productos }) => {
   return (
-    <section className="container">
+    <section className="container mb-4 mt-2">
       <Row xs={1} md={3}>
-        <Col className="">
-          <CardProducto
-            nombre="Pizza Margarita Clásica"
-            descripcion="Pizza tradicional con salsa de tomate, mozzarella y albahaca"
-            precio={4500}
-          ></CardProducto>
-        </Col>
+        {productos.map((itemproducto) => (
+          <Col key={itemproducto.id} className="mt-4">
+            <CardProducto itemproducto={itemproducto}></CardProducto>
+          </Col>
+        ))}
       </Row>
     </section>
   );
