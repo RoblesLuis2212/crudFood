@@ -17,6 +17,7 @@ const Productos = ({ productos, filtrarProducto }) => {
 
   const postValidaciones = (data) => {
     const resultado = filtrarProducto(data.nombreProducto);
+    //Se muestra un mensaje de advertencia con sweetalert
     if (resultado.length === 0) {
       Swal.fire({
         icon: "error",
@@ -24,9 +25,10 @@ const Productos = ({ productos, filtrarProducto }) => {
         text: "No se encontraron productos",
         confirmButtonText: "aceptar",
       });
+      //En caso de no obtener datos el estado permanecera inmutable
       setProductosFiltrados(productos);
     } else {
-      setProductosFiltrados(resultado);
+      setProductosFiltrados(resultado); //Se muestra los datos obtenidos
     }
     reset();
   };
