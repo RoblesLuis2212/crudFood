@@ -66,6 +66,14 @@ function App() {
     return true;
   };
 
+  //buscar producto por nombre
+  const filtrarProducto = (nombreProducto) => {
+    const productoFiltrado = productos.find(
+      (itemProducto) => itemProducto.nombreProducto === nombreProducto
+    );
+    return productoFiltrado;
+  };
+
   return (
     <>
       <BrowserRouter>
@@ -77,7 +85,12 @@ function App() {
           <Routes>
             <Route
               path="/"
-              element={<Inicio productos={productos}></Inicio>}
+              element={
+                <Inicio
+                  productos={productos}
+                  filtrarProducto={filtrarProducto}
+                ></Inicio>
+              }
             ></Route>
             <Route
               path="/detalle/:id"

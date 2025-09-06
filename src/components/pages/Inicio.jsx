@@ -1,11 +1,14 @@
 import Banner from "./Banner";
 import Productos from "./Productos";
 
-const Inicio = ({ productos }) => {
+const Inicio = ({ productos, filtrarProducto }) => {
   return (
     <div>
       <Banner></Banner>
-      <Productos productos={productos}></Productos>
+      <Productos
+        productos={productos}
+        filtrarProducto={filtrarProducto}
+      ></Productos>
     </div>
   );
 };
