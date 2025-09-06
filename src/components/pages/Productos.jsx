@@ -1,8 +1,13 @@
 import { Form, Button } from "react-bootstrap";
 import ListaProductos from "./ListaProductos";
 import { useForm } from "react-hook-form";
+import { useState } from "react";
+import Swal from "sweetalert2";
 
 const Productos = ({ productos, filtrarProducto }) => {
+  //Estado para guardar el producto filtrado
+  const [productoFiltrado, setProductosFiltrados] = useState(productos);
+
   const {
     register,
     handleSubmit,
@@ -11,7 +16,18 @@ const Productos = ({ productos, filtrarProducto }) => {
   } = useForm();
 
   const postValidaciones = (data) => {
-    console.log(data);
+    const resultado = filtrarProducto(data.nombreProducto);
+    if (resultado.length === 0) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops..",
+        text: "No se encontraron productos",
+        confirmButtonText: "aceptar",
+      });
+      setProductosFiltrados(productos);
+    } else {
+      setProductosFiltrados(resultado);
+    }
     reset();
   };
 
@@ -46,16 +62,15 @@ const Productos = ({ productos, filtrarProducto }) => {
             <Button variant="success" type="submit" className="fontTiza ms-1">
               Buscar
             </Button>
-            <Form.Text className="text-danger">
-              {errors.nombreProducto?.message}
-            </Form.Text>
           </Form.Group>
+          <Form.Text className="text-danger">
+            {errors.nombreProducto?.message}
+          </Form.Text>
         </Form>
       </section>
-      <ListaProductos
-        productos={productos}
-        filtrarProducto={filtrarProducto}
-      ></ListaProductos>
+      {productoFiltrado.length > 0 && (
+        <ListaProductos productos={productoFiltrado} />
+      )}
     </>
   );
 };

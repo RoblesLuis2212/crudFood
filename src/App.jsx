@@ -68,9 +68,10 @@ function App() {
 
   //buscar producto por nombre
   const filtrarProducto = (nombreProducto) => {
-    const productoFiltrado = productos.find(
+    const productoFiltrado = productos.filter(
       (itemProducto) => itemProducto.nombreProducto === nombreProducto
     );
+    console.log(productoFiltrado);
     return productoFiltrado;
   };
 
