@@ -2,9 +2,10 @@ import { useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useForm } from "react-hook-form";
-import { useParams } from "react-router";
+import { data, useNavigate, useParams } from "react-router";
 import Swal from "sweetalert2";
 import { v4 as uuidv4 } from "uuid";
+import { Navigate } from "react-router";
 
 const FormularioProducto = ({
   titulo,
@@ -19,6 +20,8 @@ const FormularioProducto = ({
     setValue,
     formState: { errors },
   } = useForm();
+
+  const navigate = useNavigate();
 
   const { id } = useParams();
 
@@ -48,7 +51,16 @@ const FormularioProducto = ({
         });
         reset();
       }
-    } else {
+    } else if (titulo === "Editar Producto") {
+      if (modificarProducto(id, data)) {
+        Swal.fire({
+          title: "Producto Actualizado!",
+          text: `El producto ${data.nombreProducto} se actualizo correctamente`,
+          icon: "success",
+        }).then(() => {
+          navigate("/administrador");
+        });
+      }
     }
   };
 
@@ -77,7 +89,7 @@ const FormularioProducto = ({
             })}
           />
           <Form.Text className="text-danger">
-            {errors.producto?.message}
+            {errors.nombreProducto?.message}
           </Form.Text>
         </Form.Group>
 
@@ -117,7 +129,7 @@ const FormularioProducto = ({
             })}
           />
           <Form.Text className="text-danger">
-            {errors.urlimagen?.message}
+            {errors.imagen?.message}
           </Form.Text>
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -152,14 +164,14 @@ const FormularioProducto = ({
                   "la descripcion breve debe contener minimo 10 caracteres",
               },
               maxLength: {
-                value: 70,
+                value: 100,
                 message:
-                  "la descripcion breve puede contener maximo 70 caracteres",
+                  "la descripcion breve puede contener maximo 100 caracteres",
               },
             })}
           />
           <Form.Text className="text-danger">
-            {errors.descripcionbreve?.message}
+            {errors.descripcion_breve?.message}
           </Form.Text>
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -177,14 +189,14 @@ const FormularioProducto = ({
                   "la descripcion amplia debe contener minimo 20 caracteres",
               },
               maxLength: {
-                value: 100,
+                value: 500,
                 message:
-                  "la descripcion amplia puede contener maximo 100 caracteres",
+                  "la descripcion amplia puede contener maximo 500 caracteres",
               },
             })}
           />
           <Form.Text className="text-danger">
-            {errors.descripcionamplia?.message}
+            {errors.descripcion_amplia?.message}
           </Form.Text>
         </Form.Group>
         <Button variant="success" type="submit">
