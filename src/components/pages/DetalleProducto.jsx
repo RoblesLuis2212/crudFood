@@ -1,27 +1,29 @@
+import { useEffect } from "react";
 import { Button, Row, Col, Form } from "react-bootstrap";
+import { useParams } from "react-router";
 
-const DetalleProducto = () => {
+const DetalleProducto = ({ buscarProducto }) => {
+  const { id } = useParams();
+
+  const productoBuscado = buscarProducto(id);
+  console.log(productoBuscado);
+
   return (
     <section className="container border mt-5">
-      <Row xs={1} md={2}>
+      <Row xs={1} md={4}>
         <Col className="p-0">
           <img
-            src="https://images.pexels.com/photos/2619970/pexels-photo-2619970.jpeg"
+            src={productoBuscado.imagen}
             alt="Pizza"
-            className="img-fluid h-100"
+            className="img-fluid h-100 imgDetalleProducto"
           />
         </Col>
-        <Col>
-          <h3 className="fontTiza mt-3">Pizza Margarita Clasíca</h3>
+        <Col xs={1} md={9}>
+          <h3 className="fontTiza mt-3">{productoBuscado.nombreProducto}</h3>
           <hr />
-          <p className="fontTiza">
-            Nuestra pizza margarita artesanal hecha con casa madre, salsa de
-            tomate casera, queso mozzarella de búfala premium y hojas frescas de
-            albahaca. Horneada en horno de piedra para obtener ese crujiente
-            perfecto.
-          </p>
-          <p className="fontTiza">Categoria: comida</p>
-          <p className="fontTiza mt-0">Precio: $4500</p>
+          <p className="fontTiza">{productoBuscado.descripcion_amplia}</p>
+          <p className="fontTiza">Categoria: {productoBuscado.categoria}</p>
+          <p className="fontTiza mt-0">Precio: ${productoBuscado.precio}</p>
         </Col>
       </Row>
     </section>

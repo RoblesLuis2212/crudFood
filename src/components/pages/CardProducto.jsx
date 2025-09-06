@@ -17,10 +17,11 @@ const CardProducto = ({ itemproducto }) => {
         <p className="fontTiza">Precio: ${itemproducto.precio}</p>
       </Card.Body>
       <Card.Footer>
-        <Link to={"/detalle"}>
-          <Button variant="success" className="float-end fontTiza">
-            Ver más
-          </Button>
+        <Link
+          className="btn btn-success float-end fontTiza"
+          to={`/detalle/${itemproducto.id}`}
+        >
+          Ver más
         </Link>
       </Card.Footer>
     </Card>

@@ -44,6 +44,10 @@ main{
   width: 250px;
 
 }
+.imgDetalleProducto{
+  width: auto;
+  height: 200px;
+}
 .imgCardProducto{
   width: 100px;
   height: 350px;
