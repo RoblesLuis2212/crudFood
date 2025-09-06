@@ -68,3 +68,11 @@ main{
     height: 320px;
   }
 }
+/*media query para dispositivos mobile*/
+@media(max-width: 576px){
+  .imgDetalleProducto{
+    max-height: 250px;
+    object-fit: cover;
+    width: 100%;
+  }
+}
