@@ -46,9 +46,10 @@ const FormularioProducto = ({
       if (crearProducto(data)) {
         Swal.fire({
           title: "Producto creado",
-          text: `Producto ${data.producto} se creo correctamente`,
+          text: `Producto ${data.nombreProducto} se creo correctamente`,
           icon: "success",
         });
+        navigate("/administrador");
         reset();
       }
     } else if (titulo === "Editar Producto") {

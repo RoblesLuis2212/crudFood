@@ -1,10 +1,10 @@
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router";
 
-const ItemProducto = ({ itemProducto, borrarProducto }) => {
+const ItemProducto = ({ itemProducto, borrarProducto, fila }) => {
   return (
     <tr>
-      <td>{itemProducto.id}</td>
+      <td>{fila}</td>
       <td>{itemProducto.nombreProducto}</td>
       <td>{itemProducto.precio}</td>
       <td className="text-center">

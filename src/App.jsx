@@ -43,7 +43,6 @@ function App() {
   };
 
   const buscarProducto = (idProducto) => {
-    console.log(idProducto);
     const productoBuscado = productos.find(
       (itemProducto) => itemProducto.id === idProducto
     );
@@ -71,7 +70,6 @@ function App() {
     const productoFiltrado = productos.filter(
       (itemProducto) => itemProducto.nombreProducto === nombreProducto
     );
-    console.log(productoFiltrado);
     return productoFiltrado;
   };
 

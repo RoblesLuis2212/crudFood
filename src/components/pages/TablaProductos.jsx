@@ -16,11 +16,12 @@ const TablaProductos = ({ setProductos, productos, borrarProducto }) => {
         </tr>
       </thead>
       <tbody>
-        {productos.map((itemProducto) => (
+        {productos.map((itemProducto, indice) => (
           <ItemProducto
             itemProducto={itemProducto}
             key={itemProducto.id}
             borrarProducto={borrarProducto}
+            fila={indice + 1}
           ></ItemProducto>
         ))}
       </tbody>
