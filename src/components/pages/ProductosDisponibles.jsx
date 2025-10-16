@@ -2,12 +2,29 @@ import Button from "react-bootstrap/Button";
 import TablaProductos from "./TablaProductos";
 import { Link } from "react-router";
 import ProductosPrueba from "../../data/ProductosPrueba";
+import { useState, useEffect } from "react";
+import { useEffectEvent } from "react";
+import { listarProductos } from "../../helpers/queries";
 
-const ProductosDisponibles = ({ setProducto, productos, borrarProducto }) => {
-  const cargarProductosPrueba = () => {
-    setProducto(ProductosPrueba);
-    console.log("cargando productos de prueba...");
-  };
+const ProductosDisponibles = ({ borrarProducto }) => {
+
+  const [productos, setProductos] = useState([]);
+
+  useEffect(() => {
+    obtenerProducto();
+  }, []);
+
+  const obtenerProducto = async () => {
+    //Solicitar los datos al backend
+    const respuesta = await listarProductos();
+    //Verificar que se obtenieron correctamente los datos
+    if (respuesta.status === 200) {
+      const datos = await respuesta.json();
+      setProductos(datos);
+    }
+    //Cargar los productos en el state
+  }
+
 
   return (
     <section className="container mt-3">
@@ -19,20 +36,10 @@ const ProductosDisponibles = ({ setProducto, productos, borrarProducto }) => {
               <i className="bi bi-file-earmark-plus"></i>
             </Button>
           </Link>
-          <Link>
-            <Button
-              variant="success"
-              className="mt-4"
-              onClick={cargarProductosPrueba}
-            >
-              <i className="bi bi-database-fill-add"></i>
-            </Button>
-          </Link>
         </div>
       </div>
       <hr />
       <TablaProductos
-        setProductos={setProducto}
         productos={productos}
         borrarProducto={borrarProducto}
       ></TablaProductos>
