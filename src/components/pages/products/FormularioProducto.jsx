@@ -6,10 +6,10 @@ import { data, useNavigate, useParams } from "react-router";
 import Swal from "sweetalert2";
 import { v4 as uuidv4 } from "uuid";
 import { Navigate } from "react-router";
+import { obtenerProductosID, crearProducto } from "../../../helpers/queries";
 
 const FormularioProducto = ({
   titulo,
-  crearProducto,
   buscarProducto,
   modificarProducto,
 }) => {
@@ -26,24 +26,33 @@ const FormularioProducto = ({
   const { id } = useParams();
 
   useEffect(() => {
+    buscarProductoID();
+  }, []);
+
+  const buscarProductoID = async () => {
     if (titulo === "Editar Producto") {
-      const productoBuscado = buscarProducto(id);
-      setValue("nombreProducto", productoBuscado.nombreProducto);
-      setValue("precio", productoBuscado.precio);
-      setValue("imagen", productoBuscado.imagen);
-      setValue("categoria", productoBuscado.categoria);
-      setValue("descripcion_breve", productoBuscado.descripcion_breve);
-      setValue("descripcion_amplia", productoBuscado.descripcion_amplia);
+      console.log(id);
+      const respuesta = await obtenerProductosID(id);
+      if (respuesta.status === 200) {
+        const productoBuscado = await respuesta.json();
+        setValue("nombreProducto", productoBuscado.nombreProducto);
+        setValue("precio", productoBuscado.precio);
+        setValue("imagen", productoBuscado.imagen);
+        setValue("categoria", productoBuscado.categoria);
+        setValue("descripcion_breve", productoBuscado.descripcion_breve);
+        setValue("descripcion_amplia", productoBuscado.descripcion_amplia);
+      }
+      else {
+        alert("Ocurrio un error al editar el producto, intente mas tarde");
+      }
     }
-  });
+  }
 
-  const postValidacion = (data) => {
+  const postValidacion = async (data) => {
+    console.log(data)
     if (titulo === "Crear Producto") {
-      //Agregar id
-      data.id = uuidv4();
-      console.log(data);
-
-      if (crearProducto(data)) {
+      const respuesta = await crearProducto(data);
+      if (respuesta.status === 201) {
         Swal.fire({
           title: "Producto creado",
           text: `Producto ${data.nombreProducto} se creo correctamente`,
@@ -51,6 +60,8 @@ const FormularioProducto = ({
         });
         navigate("/administrador");
         reset();
+      } else {
+        console.log("Se ha producido un error");
       }
     } else if (titulo === "Editar Producto") {
       if (modificarProducto(id, data)) {
@@ -141,12 +152,12 @@ const FormularioProducto = ({
             })}
           >
             <option value="">Seleccione una categoria</option>
-            <option value="sandwiches_y_wraps">Sandwiches</option>
-            <option value="pizzas">Pizzas</option>
-            <option value="ensaladas">Ensaladas</option>
-            <option value="acompanamientos">Acompañamientos</option>
-            <option value="postres">Postres</option>
-            <option value="bebidas">Bebidas</option>x
+            <option value="Sandwiches y Wraps">Sandwiches</option>
+            <option value="Pizzas">Pizzas</option>
+            <option value="Ensaladas">Ensaladas</option>
+            <option value="Acompanamientos">Acompañamientos</option>
+            <option value="Postres">Postres</option>
+            <option value="Bebidas">Bebidas</option>x
           </Form.Select>
           <Form.Text className="text-danger">
             {errors.categoria?.message}

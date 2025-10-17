@@ -18,7 +18,7 @@ const ItemProducto = ({ itemProducto, borrarProducto, fila }) => {
       <td className="d-flex justify-content-md-center gap-1">
         <Link
           className="me-2 btn btn-warning"
-          to={`/administrador/editar/${itemProducto.id}`}
+          to={`/administrador/editar/${itemProducto._id}`}
         >
           <i className="bi bi-pencil-square"></i>
         </Link>
