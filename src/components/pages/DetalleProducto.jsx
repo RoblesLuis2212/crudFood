@@ -1,12 +1,23 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Button, Row, Col, Form } from "react-bootstrap";
 import { useParams } from "react-router";
+import { obtenerProductosID } from "../../helpers/queries";
 
-const DetalleProducto = ({ buscarProducto }) => {
+const DetalleProducto = ({ }) => {
+  const [productoBuscado, setProductoBuscado] = useState([]);
   const { id } = useParams();
 
-  const productoBuscado = buscarProducto(id);
-  console.log(productoBuscado);
+  useEffect(() => {
+    obtenerProductoID();
+  }, [])
+
+  const obtenerProductoID = async () => {
+    const respuesta = await obtenerProductosID(id);
+    if (respuesta.status === 200) {
+      const productoBuscado = await respuesta.json();
+      setProductoBuscado(productoBuscado);
+    }
+  }
 
   return (
     <section className="container border mt-5 mb-3">

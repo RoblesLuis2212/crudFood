@@ -69,7 +69,7 @@ const Productos = ({ productos, filtrarProducto }) => {
           </Form.Text>
         </Form>
       </section>
-      <ListaProductos productos={productoFiltrado} />
+      <ListaProductos />
     </>
   );
 };
