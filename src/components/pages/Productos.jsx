@@ -14,7 +14,6 @@ const Productos = ({ productos, filtrarProducto }) => {
     reset,
     formState: { errors },
   } = useForm();
-
   const postValidaciones = (data) => {
     const resultado = filtrarProducto(data.nombreProducto);
     //Se muestra un mensaje de advertencia con sweetalert
@@ -70,9 +69,7 @@ const Productos = ({ productos, filtrarProducto }) => {
           </Form.Text>
         </Form>
       </section>
-      {productoFiltrado.length > 0 && (
-        <ListaProductos productos={productoFiltrado} />
-      )}
+      <ListaProductos productos={productoFiltrado} />
     </>
   );
 };
