@@ -40,3 +40,20 @@ export const crearProducto = async (producto) => {
     return null;
   }
 };
+
+export const editarProducto = async (id, producto) => {
+  try {
+    const respuesta = await fetch(`${productosBackend}${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(producto),
+    });
+    console.log(respuesta);
+    return respuesta;
+  } catch (err) {
+    console.error(err);
+    return null;
+  }
+};

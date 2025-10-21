@@ -6,7 +6,7 @@ import { data, useNavigate, useParams } from "react-router";
 import Swal from "sweetalert2";
 import { v4 as uuidv4 } from "uuid";
 import { Navigate } from "react-router";
-import { obtenerProductosID, crearProducto } from "../../../helpers/queries";
+import { obtenerProductosID, crearProducto, editarProducto } from "../../../helpers/queries";
 
 const FormularioProducto = ({
   titulo,
@@ -64,7 +64,8 @@ const FormularioProducto = ({
         console.log("Se ha producido un error");
       }
     } else if (titulo === "Editar Producto") {
-      if (modificarProducto(id, data)) {
+      const respuesta = await editarProducto(id, data)
+      if (respuesta.status === 200) {
         Swal.fire({
           title: "Producto Actualizado!",
           text: `El producto ${data.nombreProducto} se actualizo correctamente`,
@@ -72,6 +73,9 @@ const FormularioProducto = ({
         }).then(() => {
           navigate("/administrador");
         });
+      }
+      else {
+        alert("Ocurrio un error no se pudo actualizar el producto")
       }
     }
   };
