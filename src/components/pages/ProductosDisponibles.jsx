@@ -5,6 +5,7 @@ import ProductosPrueba from "../../data/ProductosPrueba";
 import { useState, useEffect } from "react";
 import { useEffectEvent } from "react";
 import { listarProductos } from "../../helpers/queries";
+import { set } from "react-hook-form";
 
 const ProductosDisponibles = ({ borrarProducto }) => {
 
@@ -42,6 +43,7 @@ const ProductosDisponibles = ({ borrarProducto }) => {
       <TablaProductos
         productos={productos}
         borrarProducto={borrarProducto}
+        setProductos={setProductos}
       ></TablaProductos>
     </section>
   );
