@@ -6,7 +6,7 @@ import DetalleProducto from "./components/pages/DetalleProducto";
 import Administrador from "./components/pages/Administrador";
 import FormularioProducto from "./components/pages/products/FormularioProducto";
 import Error404 from "./components/pages/Error404";
-import { BrowserRouter, Routes, Route } from "react-router";
+import { BrowserRouter, Routes, Route, useParams } from "react-router";
 import { useEffect, useState } from "react";
 import ProtectorAdmin from "./components/routes/ProtectorAdmin";
 BrowserRouter;
@@ -65,6 +65,11 @@ function App() {
     return true;
   };
 
+  const { id } = useParams();
+  const buscarProductoID = async () => {
+
+  }
+
   //buscar producto por nombre
   const filtrarProducto = (nombreProducto) => {
     const productoFiltrado = productos.filter(
@@ -95,7 +100,6 @@ function App() {
               path="/detalle/:id"
               element={
                 <DetalleProducto
-                  buscarProducto={buscarProducto}
                 ></DetalleProducto>
               }
             ></Route>

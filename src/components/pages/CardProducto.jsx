@@ -19,7 +19,7 @@ const CardProducto = ({ itemproducto }) => {
       <Card.Footer>
         <Link
           className="btn btn-success float-end fontTiza"
-          to={`/detalle/${itemproducto.id}`}
+          to={`/detalle/${itemproducto._id}`}
         >
           Ver más
         </Link>
