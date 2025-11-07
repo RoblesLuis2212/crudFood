@@ -26,7 +26,7 @@ const Login = ({ setUsuarioLogueado }) => {
       });
       Swal.fire({
         icon: "success",
-        title: "Bienvenido!",
+        title: `Bienvenido ${datos.usuario}`,
         text: "inicio de sesion exitoso",
       }); //redireccionar a la pagina del administrador
       navegacion("/administrador");
