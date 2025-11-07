@@ -13,7 +13,7 @@ BrowserRouter;
 
 function App() {
   const sesionUsuario =
-    JSON.parse(sessionStorage.getItem("usuarioKey")) || false;
+    JSON.parse(sessionStorage.getItem("usuarioKey")) || {};
   const [usuarioLogeado, setUsuarioLogueado] = useState(sesionUsuario);
 
   //Almacenar los productos en el local storage
