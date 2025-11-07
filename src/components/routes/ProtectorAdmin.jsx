@@ -3,7 +3,7 @@ import { Navigate, Outlet } from "react-router";
 
 const ProtectorAdmin = ({ usuarioLogeado }) => {
   //si no estoy logueado
-  if (!usuarioLogeado) {
+  if (!usuarioLogeado.usuario) {
     return <Navigate to={"/login"} />;
   } else {
     return <Outlet />;
