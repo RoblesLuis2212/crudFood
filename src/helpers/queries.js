@@ -1,4 +1,5 @@
 const productosBackend = import.meta.env.VITE_API_PRODUCTOS;
+const usuarioBackend = import.meta.env.VITE_API_USUARIOS;
 
 console.log(productosBackend);
 
@@ -30,6 +31,7 @@ export const crearProducto = async (producto) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "x-token": JSON.parse(sessionStorage.getItem("usuarioKey")).token,
       },
       body: JSON.stringify(producto),
     });
@@ -47,6 +49,7 @@ export const editarProducto = async (id, producto) => {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
+        "x-token": JSON.parse(sessionStorage.getItem("usuarioKey")).token,
       },
       body: JSON.stringify(producto),
     });
@@ -62,7 +65,27 @@ export const borrarProductoAPI = async (id) => {
   try {
     const respuesta = await fetch(`${productosBackend}${id}`, {
       method: "DELETE",
+      headers: {
+        "x-token": JSON.parse(sessionStorage.getItem("usuarioKey")).token,
+      },
     });
+    return respuesta;
+  } catch (err) {
+    console.error(err);
+    return null;
+  }
+};
+
+export const login = async (usuario) => {
+  try {
+    const respuesta = await fetch(usuarioBackend + "/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(usuario),
+    });
+    console.log(respuesta);
     return respuesta;
   } catch (err) {
     console.error(err);

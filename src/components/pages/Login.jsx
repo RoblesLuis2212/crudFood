@@ -3,6 +3,7 @@ import Card from "react-bootstrap/Card";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
 import Swal from "sweetalert2";
+import { login } from "../../helpers/queries";
 
 const Login = ({ setUsuarioLogueado }) => {
   const {
@@ -13,19 +14,19 @@ const Login = ({ setUsuarioLogueado }) => {
 
   const navegacion = useNavigate();
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     console.log(data);
-    //Agregar logica del login
-    if (
-      data.email === import.meta.env.VITE_API_EMAIL &&
-      data.contrasena === import.meta.env.VITE_API_PASSWORD
-    ) {
-      //aqui logueo al usuario
-      //actualizar el estado
-      setUsuarioLogueado(true);
+    const respuesta = await login(data);
+    if (respuesta.status === 200) {
+      const datos = await respuesta.json();
+
+      setUsuarioLogueado({
+        usuario: datos.usuario,
+        token: datos.token
+      });
       Swal.fire({
         icon: "success",
-        title: "Bienvenido!",
+        title: `Bienvenido ${datos.usuario}`,
         text: "inicio de sesion exitoso",
       }); //redireccionar a la pagina del administrador
       navegacion("/administrador");
@@ -67,7 +68,7 @@ const Login = ({ setUsuarioLogueado }) => {
                 <Form.Control
                   type="password"
                   placeholder="ingresa tu contraseña"
-                  {...register("contrasena", {
+                  {...register("password", {
                     required: "la contraseña es obligatoria",
                     minLength: {
                       value: 8,
@@ -81,7 +82,7 @@ const Login = ({ setUsuarioLogueado }) => {
                   })}
                 />
                 <Form.Text className="text-danger">
-                  {errors.contrasena?.message}
+                  {errors.password?.message}
                 </Form.Text>
               </Form.Group>
               <Button variant="warning" type="submit">
